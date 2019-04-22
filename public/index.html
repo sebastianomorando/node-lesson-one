@@ -1,0 +1,47 @@
+<!doctype HTML>
+<html>
+<head>
+  <title> Pipppo </title>
+  
+</head>
+<body>
+	<h1> ciao sono un bellissimo sito pipppo </h1>
+	
+	<h1 id="counter">COUNT</h1>
+	
+	<button id="add">AGGIUNGI</button>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	
+	<script>
+	
+		$.ajax({
+		  url: '/api/count',
+		  type: 'GET',
+		  contentType: 'application/json',
+		  dataType: 'json',
+		  success: function(result) {
+			$('#counter').html(result.count);
+		  }
+		})
+		
+		$("#add").on('click', function () {
+		  $.ajax({
+			  url: '/api/count',
+			  type: 'POST',
+			  contentType: 'application/json',
+			  dataType: 'json',
+			  success: function(result) {
+				$('#counter').html(result.count);
+			  }
+		  })
+		});
+		
+	
+	</script>
+	
+	
+	
+</body>
+
+</html>
